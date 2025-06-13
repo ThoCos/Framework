@@ -1,0 +1,193 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    min-height: 100vh;
+}
+html{
+    background-color: #222831;
+    font-family: calibri;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #393E46;
+}
+header li#profil a{
+    padding: 5px;
+}
+div#compte{
+    display: flex;
+    position: absolute;
+    left: 80%;
+    gap: 30px;
+}
+main{
+    width: 80%;
+    height: 70vh;
+    margin-left: 30px;
+    color: #ECEEEF;
+   
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-weight: bold;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #ECEEEF;
+    font-size: 1.2em;
+}
+.active{
+    color: rgb(44, 228, 228);
+}
+form, h1{
+    margin-left: 30px;
+    color: #ECEEEF;
+}
+h1{
+    margin-top:100px;
+}
+::selection {
+    color: #393E46;
+    background: #ECEEEF;
+}
+/* ==================== C O N T A C T =================== */
+div label{
+    width: 0%;
+}
+input#nom, input#prenom, input#email, textarea#message{
+    background-color: #575f6b;
+    color: #d1d1d1;
+    margin-top: 5px;
+}
+input[type=submit] {
+    color: white;
+    background-color: #575f6b;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    /*box-shadow: 0px 5px 5px 5px #737373;*/
+}
+input[type=submit]:hover{
+    transform: scale(1.05);
+    color: lime;
+    background-color: #575f6b;
+}
+.alert{
+    color: rgb(255, 239, 239);
+}
+form p input[type=text]{
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    height: 2em;
+    width: 30%;
+}
+form p input[type=email] {
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    height: 2em;
+    width: 30%;
+}
+form p textarea{
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    width: 30%;
+    margin-bottom: 15px;
+}
+/* ==================== P R O F I L =================== */
+article.profil{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+article.profil i{
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+article.profil p{
+    font-weight: bold;
+}
+article.profil div{
+    background-color: #575f6b;
+    padding: 50px 100px 50px 100px;
+    border-radius: 10px;
+}
+/* ==================== C O N N E X  I O N =================== */
+form p input[type=password]{
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    height: 2em;
+    width: 30%;
+}
+div label {
+    width: 0%;
+}
+input#mdp, input#pseudo {
+    background-color: #575f6b;
+    color: #d1d1d1;
+    margin-top: 5px;
+}
+
+p#connexion{
+    font-size: 1em;
+    color: darkgray;
+    margin-bottom: 20px;
+}
+p#connexion a{
+    color: #F79B72;
+    text-decoration: none;
+    font-size: 1em;
+}
+/* ==================== I N S C R I P T I O N =================== */
+form p input[type=password], input[type=email] {
+    border-radius: 5px;
+    border: 1px solid darkgray;
+    height: 2em;
+    width: 30%;
+}
+div label {
+    width: 0%;
+}
+input#inscriptionMdp,input#inscriptionPseudo, input#inscriptionEmail, input#inscriptionMdpConfirmation {
+    background-color: #575f6b;
+    color: #d1d1d1;
+    margin-top: 5px;
+}
+/* ==================== F O O T E R =================== */
+footer {
+   position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    color: white;
+    background-color: #393E46;
+    display: flex;
+    padding: 0 20px 0 20px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+    header{
+        display: flex;
+        justify-content:center;
+    }
+    header nav ul, div#compte{
+        display: flex;
+        flex-direction: column;
+    }
+    div#compte{
+        position: relative;
+        left: 0;
+    }
+    nav ul li{
+        text-align: center;
+    }
+}
