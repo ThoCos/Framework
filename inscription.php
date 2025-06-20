@@ -5,7 +5,7 @@ $description = "Vous êtes sur la page d'inscription";
 $title = "Inscription";
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'gestionBdd.php';
 
-// jeton csrf
+/* jeton */
 session_start();
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -26,19 +26,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $inscriptionMdpConfirmation = trim($_POST['inscriptionMdpConfirmation'] ?? '');
     $inscriptionEmail = trim($_POST['inscriptionEmail'] ?? '');
 
-    // Validation des champs REQUIS 
+    /* Validation */
     if ($inscriptionPseudo == '') {
         $erreurs['inscriptionPseudo'] = "<p>Le pseudo est requis !</p>";
     } elseif (mb_strlen($inscriptionPseudo) < 2 || mb_strlen($inscriptionPseudo) > 255) {
         $erreurs['inscriptionPseudo'] = "<p>Le pseudo doit contenir entre 2 et 255 caractères !</p>";
     }
 
-    // Validation email
     if (!filter_var($inscriptionEmail, FILTER_VALIDATE_EMAIL)) {
         $erreurs['inscriptionEmail'] = "<p>L'adresse e-mail est invalide !</p>";
     }
 
-    // Validation mot de passe
     if ($inscriptionMdp == '') {
         $erreurs['inscriptionMdp'] = "<p>Le mot de passe est requis !</p>";
     } elseif (mb_strlen($inscriptionMdp) < 8 || mb_strlen($inscriptionMdp) > 72) {
@@ -47,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erreurs['inscriptionMdp'] = "<p>Les mots de passe ne correspondent pas !</p>";
     }
 
-    // Validation Jeton
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         $erreurs['csrf'] = "<p>Mauvaise combinaison d'utilisateur</p>";
     }
@@ -55,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $hash = password_hash($inscriptionMdp, PASSWORD_DEFAULT);
 
         try {
-            // connexion à la bd
             $pdo = obtenirConnexionBdd();
             $stmt = $pdo->prepare("INSERT INTO utilisateur (pseudo, mdp, email) VALUES (?, ?, ?)");
             $stmt->execute([$inscriptionPseudo, $hash, $inscriptionEmail]);

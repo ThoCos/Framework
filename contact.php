@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 <?php require 'template' . DIRECTORY_SEPARATOR . 'header.php' ?>
-<h1> • Contact </h1>
+<h1>Contact </h1>
 
 <form action="" method="post">
     <p>
